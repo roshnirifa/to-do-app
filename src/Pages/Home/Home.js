@@ -7,6 +7,16 @@ const Home = () => {
         const name = e.target.name.value;
         const description = e.target.description.value;
         console.log(name, description);
+        const user = { name, description }
+        fetch('http://localhost:5000/addTask', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then((response) => response.json())
+            .then((data) => console.log(data));
 
 
     }
